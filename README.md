@@ -1,10 +1,8 @@
-punctuation-prediction
-==============================
+# punctuation-prediction
 
 This is a repo for my final thesis.
 
-Project Organization
-------------
+## Project Organization
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
@@ -51,7 +49,21 @@ Project Organization
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
-
---------
+---
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+## How to setup
+
+1. Create and activate venv
+
+```
+python -m venv venv
+venv\Scripts\activate
+```
+
+2. Install dependencies from requirements.txt
+
+```
+pip install -r requirements.txt
+```
