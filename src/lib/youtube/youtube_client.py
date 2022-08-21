@@ -10,7 +10,9 @@ import googleapiclient.discovery
 import google_auth_oauthlib.flow
 from dotenv import find_dotenv, load_dotenv
 
-scopes = ["https://www.googleapis.com/auth/youtube.force-ssl"]
+scopes = ["https://www.googleapis.com/auth/youtube.force-ssl",
+          "https://www.googleapis.com/auth/youtubepartner"]
+
 
 def YouTubeClient():
     # Disable OAuthlib's HTTPS verification when running locally.
