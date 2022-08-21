@@ -17,11 +17,14 @@ def main(output_filename):
         line_count = 0
         with open(os.path.join(INPUT_DIR_PATH, filename), 'r', encoding='utf8') as f:
             for line in f:
+                if line == '\n':
+                    continue
                 period_count += line.count('.')
                 comma_count += line.count(',')
                 qmark_count += line.count('?')
                 line_count += 1
 
+            output_lines.append(f'Sentence count : {line_count}\n')
             output_lines.append(f'Period count : {period_count}\n')
             output_lines.append(
                 f'Period per line: {round(period_count / line_count, 4)}\n')
@@ -33,6 +36,7 @@ def main(output_filename):
                 f'Question mark per line: {round(qmark_count / line_count, 4)}\n')
 
         output_lines.append('\n')
+        print(f'{filename} finished')
 
     output_file = open(os.path.join(OUTPUT_DIR_PATH, output_filename), 'w')
     output_file.writelines(output_lines)
