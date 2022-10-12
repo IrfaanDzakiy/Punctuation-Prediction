@@ -1,0 +1,28 @@
+# nmt_wiki.yaml
+
+## Where the samples will be written
+save_data: models/nmt/example
+## Where the vocab(s) will be written
+src_vocab: models/nmt/example.vocab.src
+tgt_vocab: models/nmt/example.vocab.tgt
+# Prevent overwriting existing files in the folder
+overwrite: true
+
+# Corpus opts:
+data:
+  corpus_1:
+    path_src: data/processed/nmt/wiki/src-train.txt
+    path_tgt: data/processed/nmt/wiki/tgt-train.txt
+  valid:
+    path_src: data/processed/nmt/wiki/src-val.txt
+    path_tgt: data/processed/nmt/wiki/tgt-val.txt
+
+# Train on a single GPU
+world_size: 1
+gpu_ranks: []
+
+# Where to save the checkpoints
+save_model: models/nmt/model
+save_checkpoint_steps: 500
+train_steps: 1000
+valid_steps: 500

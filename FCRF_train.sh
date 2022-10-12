@@ -1,0 +1,1 @@
+java -cp C:\Mallet\class;C:\Mallet\lib\mallet-deps.jar;C:\Mallet\lib\grmm-deps.jar cc.mallet.grmm.learning.GenericAcrfTui --training data/processed/grmm/frog_storytelling_grmm.txt --testing data/processed/grmm/frog_storytelling_grmm.txt --model-file models/grmm/tmpls.txt > stdout.txt 2> stderr.txt

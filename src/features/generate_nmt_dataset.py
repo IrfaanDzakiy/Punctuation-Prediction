@@ -1,6 +1,5 @@
 import click
 import os
-import re
 import string
 
 INPUT_DIR_PATH = 'data/raw/indo4b'

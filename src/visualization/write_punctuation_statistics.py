@@ -15,6 +15,9 @@ def main(output_filename):
         comma_count = 0
         qmark_count = 0
         line_count = 0
+        word_count = 0
+        qsentence_count = 0
+        dsentence_count = 0
         with open(os.path.join(INPUT_DIR_PATH, filename), 'r', encoding='utf8') as f:
             for line in f:
                 if line == '\n':
@@ -22,18 +25,28 @@ def main(output_filename):
                 period_count += line.count('.')
                 comma_count += line.count(',')
                 qmark_count += line.count('?')
+                word_count += len(line.split())
                 line_count += 1
+                if ('.' in line):
+                    dsentence_count += 1
+                if ('?' in line):
+                    qsentence_count += 1
 
             output_lines.append(f'Sentence count : {line_count}\n')
+            output_lines.append(f'Word count : {word_count}\n')
+            output_lines.append(
+                f'Word per sentence : {round(word_count / line_count, 4)}\n')
+            output_lines.append(
+                f'Declarative sentence count : {dsentence_count}\n')
+            output_lines.append(
+                f'Declarative sentence percentage : {round(dsentence_count * 100 / line_count, 4)}\n')
+            output_lines.append(
+                f'Question sentence count : {qsentence_count}\n')
+            output_lines.append(
+                f'Question sentence percentage : {round(qsentence_count * 100 / line_count, 4)}\n')
             output_lines.append(f'Period count : {period_count}\n')
-            output_lines.append(
-                f'Period per line: {round(period_count / line_count, 4)}\n')
             output_lines.append(f'Comma count : {comma_count}\n')
-            output_lines.append(
-                f'Comma per line: {round(comma_count / line_count, 4)}\n')
             output_lines.append(f'Question mark count : {qmark_count}\n')
-            output_lines.append(
-                f'Question mark per line: {round(qmark_count / line_count, 4)}\n')
 
         output_lines.append('\n')
         print(f'{filename} finished')

@@ -1,0 +1,1 @@
+java -cp C:\Mallet\class;C:\Mallet\lib\mallet-deps.jar;C:\Mallet\lib\grmm-deps.jar;D:\Projects\Punctuation-Prediction AcrfPredict
