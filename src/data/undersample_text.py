@@ -7,21 +7,6 @@ import warnings
 import os
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-Q_TARGET_COUNT = {
-    "bppt": 171,
-    "conllu_all_uncased": 2583127,
-    "frog_storytelling": 21,
-    "jw300": 74215,
-    "kompas": 2130,
-    "opensubtitles": 4040026,
-    "oscar_all_uncased": 4868458,
-    "parallel_corpus": 254,
-    "talpco_indonesia": 68,
-    "tempo": 2318,
-    "wiki": 9749,
-    "wikipedia_conllu": 19125
-}
-
 def remove_punc(word):
     selected_punc = string.punctuation.translate(str.maketrans('', '', ",.?"))
     return word.translate(str.maketrans('', '', selected_punc))
@@ -44,11 +29,11 @@ def undersample_file(filepath):
             if (strip_line[-1] not in [".", "?"]):
                 continue
             cleaned_line = remove_punc(strip_line)
-            if (cleaned_line[-1] == '.' and dec_count < Q_TARGET_COUNT[input_filename]):
-                dec_count += 1
-                output_file.write(f"{cleaned_line}\n")
-            elif (cleaned_line[-1] == '?'):
+            if ('?' in cleaned_line):
                 ques_count += 1
+                output_file.write(f"{cleaned_line}\n")
+            elif (cleaned_line[-1] == '.' and dec_count < ques_count):
+                dec_count += 1
                 output_file.write(f"{cleaned_line}\n")
 
     output_file.close()
@@ -61,9 +46,9 @@ def main(input_dir):
         for filename in filenames:
             if filename.endswith('.txt'):
                 files.append(os.sep.join([dirpath, filename]))
-    # for file in files:
-    #     print(file)
-    undersample_file("data/raw/indo4b/bppt.txt")
+    for file in files:
+        print(file)
+        undersample_file(file)
 
 
 if (__name__ == "__main__"):
